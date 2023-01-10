@@ -1,53 +1,25 @@
-#The board
-  # display
-  # top left
-  # top middle
-  # top right
-  # mid left
-  # mid mid
-  # mid right
-  # bottom left
-  # bottom mid
-  # bottom right
-=begin
-    X  |  X  |  O  
-  -----|-----|-----
-    X  |  X  |  O  
-  -----|-----|-----
-    O  |  O  |  X  
-  
-    this is the sample board
-=end
-
 class Board
-  def initialize
-    @squares = {
-      :tl => " ",
-      :tm => " ",
-      :tr => " ",
-      :ml => " ",
-      :mm => " ",
-      :mr => " ",
-      :bl => " ",
-      :bm => " ",
-      :br => " "
-    }
+  attr_accessor :squares
 
-    @board = 
-"  #{@squares[:tl]}  |  #{@squares[:tm]}  |  #{@squares[:tr]}  
------|-----|-----
-  #{@squares[:ml]}  |  #{@squares[:mm]}  |  #{@squares[:mr]}  
------|-----|-----
-  #{@squares[:bl]}  |  #{@squares[:bm]}  |  #{@squares[:br]}  "
+  def initialize
+    @squares = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
   end
 
-  def displayBoard
-    puts "#{@board}"
+  def displayBoard = "\n" +
+    "      #{@squares[0]}  |  #{@squares[1]}  |  #{@squares[2]}  
+    -----|-----|-----
+      #{@squares[3]}  |  #{@squares[4]}  |  #{@squares[5]}  
+    -----|-----|-----
+      #{@squares[6]}  |  #{@squares[7]}  |  #{@squares[8]}  " + "\n"
+    
+  def put_mark(square, mark)
+    @squares[square] = mark
   end
 end
 
 test = Board.new()
-test.displayBoard()
+puts test.displayBoard
 
-#take player input
-# change the values on the board based on player input
+# change the values on the board
+test.put_mark(1, "X")
+puts test.displayBoard
