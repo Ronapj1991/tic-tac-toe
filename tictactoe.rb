@@ -55,8 +55,8 @@ module Game
     end
   end
 
-  p1 = Player.new("P1", "X")
-  p2 = Player.new("P2", "O")
+  p1 = Player.new("Player1", "X")
+  p2 = Player.new("Player2", "O")
   board = Board.new()
 
   currentPlayer = p1
@@ -65,7 +65,13 @@ module Game
     userInput = (gets.chomp).to_i
     board.put_mark(userInput, currentPlayer.symbol)
     board.displayBoard
-    p board.player_win?(currentPlayer.symbol)
+    if (board.player_win?(currentPlayer.symbol))
+      puts "#{currentPlayer.name} won!"
+      break
+    elsif (board.is_board_full?)
+      puts "It's a tie"
+      break
+    end
     currentPlayer = currentPlayer.switch(p1, p2, currentPlayer) 
   end
 end
